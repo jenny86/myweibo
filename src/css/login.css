@@ -1,0 +1,82 @@
+html,body{
+	margin: 0;
+	padding: 0;
+	font-size: 28px;
+	color: #333333;
+}
+.login-wrap h1{
+	width: 100%;
+	height: 439px;
+	background:#22cb9a url(../images/logoin-bg.png) no-repeat center center;
+	background-size: 611px 262px;
+}
+.login-wrap .from{
+	display:flex;
+	flex-direction:column;
+	padding: 144px 75px 0;
+	box-sizing:border-box;
+}
+.login-wrap .from p{
+	width: 100%;
+	box-sizing:border-box;
+	height: 50px;
+	line-height: 50px;
+	font-size: 28px;
+	border: 0;
+	border-bottom:1px solid #eeeeee;
+	color: #666666;
+	margin-bottom: 57px;
+	padding-left:30px;
+}
+.login-wrap .from p input{
+	display: inline-block;
+	width: 100%;
+}
+.login-wrap .from p.account{
+	background: url(../images/account-icon.png) no-repeat left center;
+	background-size: 24px 30px;
+}
+.login-wrap .from p.password{
+	background: url(../images/password-icon.png) no-repeat left center;
+	background-size: 24px 30px;
+}
+.login-wrap .from button{
+	display: block;
+	width: 100%;
+	background: #22cb9a;
+	border-radius:40px;
+	height: 88px;
+	line-height: 88px;
+	text-align: center;
+	color: #fffefe;
+	font-size: 28px;
+	margin-bottom: 38px;
+}
+.login-wrap .buttons{
+	display: flex;
+	justify-content:space-between;
+	padding: 0 40px;
+	font-size: 28px;
+	color: #333333;
+}
+.register-wrap h1{
+	width: 100%;
+	height:373px;
+	background:url(../images/register-bg.png) no-repeat center bottom;
+	background-size: 338px 251px;
+}
+.register-wrap .from button{
+	margin: 100px 0;
+}
+.register-wrap .buttons{
+	justify-content:center;
+}
+.register-wrap .buttons span{
+	color: #22cb9a;
+}
+.register-wrap .progress{
+	width: 100%;
+	height:110px;
+	background:url(../images/decorate.png) no-repeat center 26px;
+	background-size:600px 44px;
+}
