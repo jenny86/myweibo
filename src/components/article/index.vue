@@ -138,11 +138,11 @@ export default{
 	}
 }
 
-.slide-fade-enter-to, .slide-fade-leave-to{
+.slide-fade-enter-to,.slide-fade-leave-to{
 	transition: transform 0.3s;
 	transform:translate(0px,0px);
 }
-.slide-fade-enter, .slide-fade-leave-to{
+.slide-fade-enter,.slide-fade-leave-to{
 	opacity: 0;
 	-webkit-transform:translate(-286px,0px);
 	transform:translate(-286px,0px);

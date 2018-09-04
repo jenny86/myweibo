@@ -10,13 +10,13 @@ html,body{
 	background:#22cb9a url(../images/logoin-bg.png) no-repeat center center;
 	background-size: 611px 262px;
 }
-.login-wrap .from{
+.login-wrap .form{
 	display:flex;
 	flex-direction:column;
 	padding: 144px 75px 0;
 	box-sizing:border-box;
 }
-.login-wrap .from p{
+.login-wrap .form p{
 	width: 100%;
 	box-sizing:border-box;
 	height: 50px;
@@ -28,11 +28,11 @@ html,body{
 	margin-bottom: 57px;
 	padding-left:30px;
 }
-.login-wrap .from p input{
+.login-wrap .form p input{
 	display: inline-block;
 	width: 100%;
 }
-.login-wrap .from p.account{
+.login-wrap .form p.account{
 	background: url(../images/account-icon.png) no-repeat left center;
 	background-size: 24px 30px;
 }
@@ -40,7 +40,7 @@ html,body{
 	background: url(../images/password-icon.png) no-repeat left center;
 	background-size: 24px 30px;
 }
-.login-wrap .from button{
+.login-wrap .form button{
 	display: block;
 	width: 100%;
 	background: #22cb9a;
@@ -65,7 +65,7 @@ html,body{
 	background:url(../images/register-bg.png) no-repeat center bottom;
 	background-size: 338px 251px;
 }
-.register-wrap .from button{
+.register-wrap .form button{
 	margin: 100px 0;
 }
 .register-wrap .buttons{

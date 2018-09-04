@@ -1,7 +1,7 @@
 <template>
 	<div class="login-wrap">
 		<h1></h1>
-		<div class="from">
+		<div class="form">
 			<p class="account"><input type="text" ref="account" placeholder="请输入账号"></p>
 			<p class="password"><input type="password" ref="password" placeholder="请输入密码"></p>
 			<button v-on:click="postLogin">登录</button>
@@ -16,6 +16,7 @@
 <script type="text/javascript">
 import '../../less/reset.css';
 import '../../less/login.css';
+import api from  '../../base/api';
 export default{
 	name:"Login",
 	data(){
@@ -28,23 +29,24 @@ export default{
 			let self = this;
 			let account = $(this.$refs.account).val();
 			let password = $(this.$refs.password).val();
-			debugger;
 			let promise = $.ajax({
-	            url:'https://external.pengpengla.com/h5/hits/optionList',
+	            url:api.login(),
 	            type:'post',
 	            dataType:'json',
 	            data: {
-	                id: '3',
-                    pageSize: 20,
-                    page:1,
-                    userToken:null
+	                username:account,
+                    password
 	            }
 	        });
 	        promise.done(function(res){
-	            self.$toast.top("获取数据成功");
+	            if (res.code !== '000') {
+	           		self.$router.push({ path: '/home' })
+	            } else {
+	           		alert(res.msg)
+	            };
 	        })
 	        promise.fail(function(res){
-	            //this.$toast.top('top');
+	            alert('请求失败')
 	        })
 		}
 	}
