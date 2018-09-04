@@ -1,7 +1,8 @@
 <template>
   <div class="wrap">
-    	<router-link :to="{path:'/login'}" tag="p" class="login">登录</router-link>
+    	
     	<div class="content_wrap">
+            <router-link :to="{path:'/login'}" tag="p" class="login">登录</router-link>
     		<router-view></router-view>
     	</div>
 	    <ul class="menu">
@@ -14,12 +15,45 @@
 
 <script>
 
-import '../css/home.less';
+
 export default {
   name: 'Menu'
 }
 </script>
 <style lang="less">
-@import '../less/reset';
+html,body{
+  height:100%;
+}
 
+@color-grey-border:#b7b7b9;
+@color-green-bg:#22cb9a;
+.flex(@justify:center,@align:center){
+  justify-content:@justify;
+  align-items:@align;
+  display: flex;
+}
+
+.wrap{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  position: relative;
+  .login{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    color:#22cb9a;
+  }
+  .content_wrap{
+    flex:1;
+    overflow:auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .menu{
+    height:100px;
+    border-top:1px solid @color-grey-border;
+    .flex(space-around);
+  }
+}
 </style>

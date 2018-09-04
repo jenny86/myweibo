@@ -10,15 +10,4 @@ export default {
 
 
 
-<style lang='less'>
-@import './less/reset';
-@base: #f938ab;
-.demo{
-    width:750px;
-    height: 100px;
-    background: @base;
-}
-</style>
-
-
 

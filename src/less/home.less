@@ -1,0 +1,29 @@
+/*@import './reset';*/
+@color-grey-border:#b7b7b9;
+@color-green-bg:#22cb9a;
+.flex(@justify:center,@align:center){
+  justify-content:@justify;
+  align-items:@align;
+  display: flex;
+}
+.user{
+  flex-direction:column;
+  & img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+  }
+  .flex();
+}
+.hot{
+  h1{
+    font-size: 20px;
+  }
+  div{
+    height:60px;
+    line-height:60px;
+    font-size:30px;
+    border:1px solid @color-grey-border;
+  }
+}

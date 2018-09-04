@@ -16,8 +16,8 @@
 </template>
 
 <script type="text/javascript">
-import '../../css/reset.css';
-import '../../css/login.css';
+import '../../less/reset.css';
+import '../../less/login.css';
 export default{
 	name:"Register",
 	data(){
