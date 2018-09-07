@@ -86,6 +86,7 @@ module.exports = {
         vue: {
             postcss: [require('postcss-px2rem')({ remUnit: 75, propWhiteList: [] })]
         },
+
     })
   ],
   node: {
