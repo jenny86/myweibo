@@ -1,16 +1,26 @@
 <template>
-	<div>
+	<div class="article">
 		<p @click="showSlide" class="slideMenu">三</p>
 		<div class="hot">
-			<h1>文章列表</h1>
-			<div v-for="item in list" class="content">
-				<h1>{{item.name}}</h1>
+			<div v-for="item in list" class="content" @click="goArticle(item.aid)">
+				<div class="text">
+					<dl>
+						<dd>
+							<h1>{{item.title}}</h1>
+							<p>{{item.content}}</p>
+						</dd>
+						<dt><img :src="item.avatar"></dt>
+					</dl>
+					
+				</div>
+				
 				<div class="button">
-					<p>编辑</p>
-					<p>删除</p>
+					<p>*{{item.prate}}.赞</p>
+					<p>*{{item.comments}}.收藏</p>
+					<h1>{{item.username}}.{{item.time}}</h1>
 				</div>
 			</div>
-		</div>
+		</div>	
 		<transition name="slide-fade">
 			<div class="menu-mask" v-if="isShowSlide">
 				
@@ -27,6 +37,8 @@
 </template>
 
 <script type="text/javascript">
+import api from  '../../base/api';
+
 export default{
 	name:"Article",
 	data(){
@@ -42,18 +54,16 @@ export default{
 		getData(){
 			let self = this;
 			let promise = $.ajax({
-	            url:'https://external.pengpengla.com/h5/hits/optionList',
+	            url:api.ArticalList(),
 	            type:'post',
 	            dataType:'json',
 	            data: {
-	                id: '3',
-                    pageSize: 20,
                     page:1,
-                    userToken:null
+                    suid:null
 	            }
 	        });
 	        promise.done(function(res){
-	            self.list = res.data
+	            self.list = res.data.artList
 	        })
 	        promise.fail(function(res){
 	            
@@ -64,6 +74,9 @@ export default{
 		},
 		closeSlide(){
 			this.isShowSlide = false;
+		},
+		goArticle(aid){
+			router.push({ path: '/articleItem/'+aid}) // 
 		}
 	}
 }
@@ -95,27 +108,6 @@ export default{
 	width: 50px;
 	height: 50px;
 	background: green;
-}
-.hot{
-  &>h1{
-    font-size:30px;
-  }
-  .content{
-  	.padding(0 20px);
-  	box-sizing:border-box;
-    height:60px;
-    line-height:60px;
-    font-size:21px;
-    border-top:1px solid @color-grey-border;
-    .flex(space-between,center);
-    flex:1;
-  }
-  .button{
-  	.flex(space-between,center);
-  	p{
-  		margin-left: 20px;
-  	}
-  }
 }
 .menu-mask{
 	position:fixed;

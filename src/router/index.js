@@ -7,6 +7,7 @@ import SetName from '../components/my/setname'
 import Login from '../components/login/index'
 import Menu from '../components/menu'
 import Register from '../components/login/register'
+import ArticleItem from '../components/article/item'
 
 Vue.use(Router);
 
@@ -16,32 +17,44 @@ export default new Router({
     {
       path: '/',
       component:Menu,
+      meta:{keepAlive:true,transIndex:0},
       children:[
         {
+            path: '/', 
+            redirect: '/home',
+            meta:{keepAlive:true,transIndex:10}
+        },
+        {
             path:'/home',
-            component:Home
+            component:Home,
+            meta:{keepAlive:true,transIndex:10}
         },
         {
             path:'/article',
-            component:Article
+            component:Article,
+            meta:{keepAlive:true,transIndex:11}
         },
         {
             path:'/my',
-            component:My
+            component:My,
+            meta:{keepAlive:true,transIndex:12}
         },
         {
-            path: '/', 
-            redirect: '/home' 
+            path: '/articleItem/:aid', 
+            component:ArticleItem,
+            meta:{keepAlive:true,transIndex:13}
         }
       ]
     },
     {
       path: '/login',
-      component: Login
+      component: Login,
+      meta:{keepAlive:true,transIndex:1},
     },
     {
       path: '/register',
-      component: Register
+      component: Register,
+      meta:{keepAlive:true,transIndex:2},
     }
   ]
 })

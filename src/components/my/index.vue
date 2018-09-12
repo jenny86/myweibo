@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="my">
 		{{message}}
 		<button><router-link :to="{path:'my/setname'}">设置昵称</router-link></button>
 		<router-view></router-view>
