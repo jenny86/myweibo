@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
     <div class="banner">
-      <img src="../../assets/logoin-bg.png" />
+      <img src="../../assets/images/logoin-bg.png" />
     </div>
 		<div class="hot">
 			<h1>热门推荐</h1>
@@ -16,8 +16,8 @@
 					</dl>
 				</div>
 				<div class="button">
-					<p>*{{item.prate}}.收藏</p>
-					<p>*{{item.comments}}.评论</p>
+					<p><img src="../../assets/images/praise.png"/>*{{item.prate}}.收藏</p>
+					<p><img src="../../assets/images/comment.png"/>*{{item.comments}}.评论</p>
 					<h1>{{item.username}}.{{item.time}}</h1>
 				</div>
 			</div>
@@ -29,6 +29,7 @@
 import Vue from 'vue'
 import Router from 'vue-router';
 import api from  '../../base/api';
+
 Vue.use(Router);
 export default {
 	name:"Home",
@@ -71,18 +72,7 @@ export default {
 }
 </script>
 <style lang="less">
-@color-grey-font:#cccccc;
-@color-grey-border:#b7b7b9;
-@color-green-bg:#22cb9a;
-.flex(@justify:center,@align:center){
-  justify-content:@justify;
-  align-items:@align;
-  display: flex;
-}
-.padding(@num){
-	padding:@num;
-	box-sizing:border-box;
-}
+@import "../../less/global.less";
 .user{
   flex-direction:column;
   & img{
@@ -162,7 +152,14 @@ export default {
   	color:#666;
   	p{
   		margin-left: 20px;
+      .flex(flex-start,center);
+      img{
+        display: block;
+        width:40px;
+        height:40px;
+      }
   	}
+
   }
 }
 </style>

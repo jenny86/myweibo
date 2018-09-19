@@ -17,6 +17,9 @@ export default {
     mounted () { 
         
     },
+    methods:{
+
+    },
     beforeRouteUpdate:function(to,from,next){
         if( from.meta.transIndex > to.meta.transIndex ) {
             this.transitionName = 'slide-right';
@@ -31,7 +34,8 @@ export default {
 } 
 
 </script>
-<style>
+<style lang="less">
+@import "./less/global.less";
 .child-view{
     position: absolute;
     width: 100%;

@@ -1,7 +1,7 @@
 <template>
 	<div class="login-wrap">
-		<h1></h1>
-		<div class="form">
+    <h1></h1>
+    <div class="form">
 			<p class="account"><input type="text" ref="account" placeholder="请输入账号"></p>
 			<p class="password"><input type="password" ref="password" placeholder="请输入密码"></p>
 			<button v-on:click="postLogin">登录</button>

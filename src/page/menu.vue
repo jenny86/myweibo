@@ -1,16 +1,25 @@
 <template>
     <div class="wrap">
         <div class="login">
-            <p class="search">搜索</p>
-            <router-link :to="{path:'/login'}" class="loginIcon" tag="p">登录</router-link>
+            <p class="search"></p>
+            <router-link :to="{path:'/login'}" class="loginIcon" tag="p"></router-link>
         </div>
         <transition :name="transitionName" mode="out-in"> 
             <router-view class="child-view"></router-view> 
         </transition>
 	    <ul class="menu">
-	      	<router-link :to="{path:'/home'}" tag="li">首页</router-link>
-	      	<router-link :to="{path:'/article'}" tag="li">文章</router-link>
-	     	<router-link :to="{path:'/my'}" tag="li">我的</router-link>
+	      	<router-link :to="{path:'/home'}" tag="li">
+            <img src="../assets/images/homepage.png" />
+            首页
+          </router-link>
+	      	<router-link :to="{path:'/article'}" tag="li">
+            <img src="../assets/images/createtask.png" />
+            文章
+          </router-link>
+	     	<router-link :to="{path:'/my'}" tag="li">
+          <img src="../assets/images/personage.png" />
+          我的
+        </router-link>
 	    </ul> 
         
     </div>
@@ -32,7 +41,6 @@ export default {
         }
     },
     beforeRouteUpdate:function(to,from,next){
-        console.log(to)
         if( from.meta.transIndex > to.meta.transIndex ) {
             this.transitionName = 'slide-right';
         }else if( from.meta.transIndex < to.meta.transIndex ){
@@ -83,9 +91,14 @@ html,body{
     z-index:10;
 
     .search{
-      background:url('../assets/search.png') no-repeat;
-      background-position: left center;
-      background-size: 50px 50px;
+      width: 50px;
+      height: 50px;
+      background:url('../assets/images/search.png') no-repeat center/100%;
+    }
+    .loginIcon{
+      width:60px;
+      height:60px;
+      background:url('../assets/images/personage_2.png') no-repeat center/100%;
     }
   }
   .menu{
@@ -96,6 +109,15 @@ html,body{
     .flex(space-around);
     bottom: 0;
     background: #ffffff;
+    li{
+      .flex(center,center);
+      flex-direction:column;
+      img{
+        width: 50px;
+        height: 50px;
+      }
+    }
+
   }
   .child-view{
     position: absolute;

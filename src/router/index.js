@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/home/index'
-import Article from '../components/article/index'
-import My from '../components/my/index'
-import SetName from '../components/my/setname'
-import Login from '../components/login/index'
-import Menu from '../components/menu'
-import Register from '../components/login/register'
-import ArticleItem from '../components/article/item'
+import Home from '../page/home/index'
+import Article from '../page/article/index'
+import My from '../page/my/index'
+import SetName from '../page/my/setname'
+import Login from '../page/login/index'
+import Menu from '../page/menu'
+import Register from '../page/login/register'
+import ArticleItem from '../page/article/item'
 
 Vue.use(Router);
 

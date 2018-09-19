@@ -32,6 +32,7 @@
 </template>
 
 <script type="text/javascript">
+import Router from 'vue-router';
 import api from  '../../base/api';
 export default{
 	name:"ArticleItem",
@@ -79,19 +80,8 @@ export default{
 
 </script>
 <style lang="less">
-@color-grey-font:#cccccc;
-@color-grey-border:#b7b7b9;
-@color-green-bg:#22cb9a;
-@color-red-bg:#BF7158;
-.flex(@justify:center,@align:center){
-  justify-content:@justify;
-  align-items:@align;
-  display: flex;
-}
-.padding(@num){
-	padding:@num;
-	box-sizing:border-box;
-}
+@import "../../less/global.less";
+
 .wrap .child-view.articleItem{
 	.padding(132px 40px 140px);
 	.authorInfo{
