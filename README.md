@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # website
 
 > jenny
@@ -19,3 +20,7 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+=======
+# personal_blog
+个人博客
+>>>>>>> f28648a6ef0eadb0892d783912d3cba8ae1dbec1
