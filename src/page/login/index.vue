@@ -17,6 +17,10 @@
 import '../../less/reset.css';
 import '../../less/login.css';
 import api from  '../../base/api';
+import cache from '../../base/cache';
+import Alert from '../../base/mask.js'
+
+
 export default{
 	name:"Login",
 	data(){
@@ -39,14 +43,22 @@ export default{
 	            }
 	        });
 	        promise.done(function(res){
-	            if (res.code !== '000') {
+	            if (res.code == '000') {
+
+                cache.setCache('MY_WEIBO',res.data)
+                self.$store.dispatch('login',res.data)
 	           		self.$router.push({ path: '/home' })
 	            } else {
-	           		alert(res.msg)
+                new Alert({
+                  content:res.msg
+                }).create()
 	            };
 	        })
 	        promise.fail(function(res){
-	            alert('请求失败')
+            new Alert({
+              content:'你家没网了'
+            }).create()
+
 	        })
 		}
 	}

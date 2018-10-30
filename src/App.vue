@@ -1,8 +1,7 @@
 <template>
-    <transition name="fade" mode="out-in"> 
-        <router-view></router-view> 
-    </transition>
-    
+  <transition :name="transitionName" mode="out-in">
+    <router-view class="child-view"></router-view>
+  </transition>
 </template>
 
 <script>
@@ -13,20 +12,23 @@ export default {
 　　　　return { 
 　　　　　　transitionName:'slide-left' 
 　　　　} 
-　　}, 
-    mounted () { 
-        
+　　},
+    created(){
+      this.$store.dispatch('getUserInfo');
+    },
+    mounted () {
+      this.$store.dispatch('getUserInfo');
     },
     methods:{
 
     },
     beforeRouteUpdate:function(to,from,next){
-        if( from.meta.transIndex > to.meta.transIndex ) {
-            this.transitionName = 'slide-right';
-        }else if( from.meta.transIndex < to.meta.transIndex ){
-            this.transitionName = 'slide-left';
-        }
-        next();
+      if( from.meta.transIndex > to.meta.transIndex ) {
+        this.transitionName = 'slide-right';
+      }else if( from.meta.transIndex < to.meta.transIndex ){
+        this.transitionName = 'slide-left';
+      }
+      next();
     }
 
 
@@ -34,26 +36,25 @@ export default {
 } 
 
 </script>
-<style lang="less">
+<style lang="less" scoped>
 @import "./less/global.less";
 .child-view{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform:all .5s cubic-bezier(.55,0,.1,1);
-    overflow-y: scroll;
-  }
-  .slide-left-enter,.slide-right-leave-active{
-    opacity: 0;
-    -webkit-transform:translate(100%,0);
-    transform:translate(100%,0);
-  }
-  .slide-left-leave-active,.slide-right-enter {
-    opacity: 0;
-    -webkit-transform:translate(-100%,0);
-    transform:translate(-100%,0);
-  }
-
+  position: absolute;
+  width: 100%;
+  flex:1;
+  transition:all .5s cubic-bezier(.55,0,.1,1);
+  overflow-y: scroll;
+}
+.slide-left-enter, .slide-right-leave-active{
+  opacity: 0;
+  -webkit-transform:translate(50%,0);
+  transform:translate(50%,0);
+}
+.slide-left-leave-active, .slide-right-enter {
+  opacity: 0;
+  -webkit-transform:translate(-50%,0);
+  transform:translate(-50%,0);
+}
 </style>
 
 

@@ -1,8 +1,9 @@
 <template>
     <div class="wrap">
         <div class="login">
-            <p class="search"></p>
-            <router-link :to="{path:'/login'}" class="loginIcon" tag="p"></router-link>
+            <router-link class="search" :to="{path:'/search'}" tag="p"></router-link>
+            <router-link v-if="!this.$store.state.userInfo.userid" :to="{path:'/login'}" class="loginIcon" tag="p"></router-link>
+            <p v-else @click="quit">退出</p>
         </div>
         <transition :name="transitionName" mode="out-in"> 
             <router-view class="child-view"></router-view> 
@@ -36,9 +37,9 @@ export default {
         
     },
     methods:{
-        demo(){
-            alert(11)
-        }
+      quit(){
+        this.$store.dispatch('quitLogin')
+      }
     },
     beforeRouteUpdate:function(to,from,next){
         if( from.meta.transIndex > to.meta.transIndex ) {
@@ -125,7 +126,7 @@ html,body{
     flex:1;
 
    .padding(92px 0 100px);
-    /*height: 100%;*/
+    height: 100%;
     transition:all .5s cubic-bezier(.55,0,.1,1);
     overflow-y: scroll;
   }

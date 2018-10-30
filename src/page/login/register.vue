@@ -72,7 +72,7 @@ export default{
              	contentType: false,
 	        });
 	        promise.done(function(res){
-	            
+            self.$router.push({ path: '/login' })
 	        })
 	        promise.fail(function(res){
 	            //self.$toast.top('top');

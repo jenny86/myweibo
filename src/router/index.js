@@ -8,7 +8,8 @@ import Login from '../page/login/index'
 import Menu from '../page/menu'
 import Register from '../page/login/register'
 import ArticleItem from '../page/article/item'
-
+import Search from '../page/search/index'
+import Record from '../page/article/record'
 Vue.use(Router);
 
 export default new Router({
@@ -22,39 +23,50 @@ export default new Router({
         {
             path: '/', 
             redirect: '/home',
-            meta:{keepAlive:true,transIndex:10}
+            meta:{keepAlive:true,transIndex:1}
         },
         {
             path:'/home',
             component:Home,
-            meta:{keepAlive:true,transIndex:10}
+            meta:{keepAlive:true,transIndex:1}
         },
         {
             path:'/article',
             component:Article,
-            meta:{keepAlive:true,transIndex:11}
+            meta:{keepAlive:true,transIndex:2}
         },
         {
             path:'/my',
             component:My,
-            meta:{keepAlive:true,transIndex:12}
+            meta:{keepAlive:true,transIndex:3}
         },
         {
-            path: '/articleItem/:aid', 
+            path: '/articleItem',
             component:ArticleItem,
-            meta:{keepAlive:true,transIndex:13}
-        }
+            meta:{keepAlive:true,transIndex:4}
+        },
+        {
+          path: '/record',
+          component: Record,
+          meta:{keepAlive:true,transIndex:12},
+        },
+        {
+          path: '/search',
+          component: Search,
+          meta:{keepAlive:true,transIndex:20},
+        },
       ]
     },
     {
       path: '/login',
       component: Login,
-      meta:{keepAlive:true,transIndex:1},
+      meta:{keepAlive:true,transIndex:10},
     },
     {
       path: '/register',
       component: Register,
-      meta:{keepAlive:true,transIndex:2},
-    }
+      meta:{keepAlive:true,transIndex:11},
+    },
+
   ]
 })

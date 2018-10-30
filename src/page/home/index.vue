@@ -1,11 +1,12 @@
 <template>
 	<div class="home">
+
     <div class="banner">
       <img src="../../assets/images/logoin-bg.png" />
     </div>
 		<div class="hot">
 			<h1>热门推荐</h1>
-			<div v-for="item in list" class="content" @click="goArticle(item.aid)">
+			<div v-for="item in this.$store.state.artList" class="content" @click="goArticle(item.aid,item.uid)">
 				<div class="text">
 					<dl>
 						<dd>
@@ -16,8 +17,16 @@
 					</dl>
 				</div>
 				<div class="button">
-					<p><img src="../../assets/images/praise.png"/>*{{item.prate}}.收藏</p>
-					<p><img src="../../assets/images/comment.png"/>*{{item.comments}}.评论</p>
+					<p @click="goLike()">
+            <img v-if="Number(item.prate) == 1" src="../../assets/images/praise_fill.png"/>
+            <img v-else src="../../assets/images/praise.png"/>
+            *{{item.prate}}.点赞
+          </p>
+					<p>
+            <img v-if="Number(item.store) == 1" src="../../assets/images/collection_fill.png"/>
+            <img v-else src="../../assets/images/collection.png"/>
+            *{{item.store}}.阅读量
+          </p>
 					<h1>{{item.username}}.{{item.time}}</h1>
 				</div>
 			</div>
@@ -29,44 +38,31 @@
 import Vue from 'vue'
 import Router from 'vue-router';
 import api from  '../../base/api';
+import Mask from '../../base/mask.js';
+
 
 Vue.use(Router);
 export default {
 	name:"Home",
 	data(){
 		return {
-			title:"首页",
-			list:[]
+
 		}
 	},
 	mounted:function(){
-		this.getData()
+    this.$store.dispatch('artList',this.$store.state.userInfo.userid);
 	},
 	methods:{
-		getData(){
-			let self = this;
-			let promise = $.ajax({
-	            url:api.ArticalList(),
-	            type:'post',
-	            dataType:'json',
-	            data: {
-                    page:1,
-                    suid:null
-                }
-	        });
-	        promise.done(function(res){
-	        	if (res.code == '000') {
-	        		self.list = res.data.artList
-	        	};
-	            
-	        })
-	        promise.fail(function(res){
-	            
-	        }) 
-		},
-		goArticle(aid){
-			this.$router.push({ path: '/articleItem/'+aid}) // 
+		goArticle(aid,uid){
+			this.$router.push({
+        path: '/articleItem/',
+        query:{
+          aid,
+          uid
+        }
+			})
 		}
+
 	}
 
 }
@@ -151,7 +147,7 @@ export default {
   	.flex(space-between,center);
   	color:#666;
   	p{
-  		margin-left: 20px;
+  		margin-right: 20px;
       .flex(flex-start,center);
       img{
         display: block;
@@ -159,7 +155,12 @@ export default {
         height:40px;
       }
   	}
-
+    h1{
+      width: 346px;
+      overflow: hidden;/*内容超出后隐藏*/
+      text-overflow: ellipsis;/* 超出内容显示为省略号*/
+      white-space: nowrap;/*文本不进行换行*/
+    }
   }
 }
 </style>

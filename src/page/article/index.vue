@@ -5,7 +5,7 @@
       {{title}}
     </p>
 
-		<div class="list">
+		<div class="list" v-if="list.length > 0">
 			<div v-for="item in list" class="content" @click="goArticle(item.aid)">
         <h1>{{item.time}} 在 {{item.type}} 发布了文章 </h1>
         <p>{{item.title}}</p>
@@ -15,6 +15,9 @@
         </div>
       </div>
 		</div>
+    <div v-else class="empty">
+      还没有发布文章，快去发布吧
+    </div>
 		<transition name="slide-fade">
 			<div class="menu-mask" v-if="isShowSlide">
 
@@ -22,7 +25,7 @@
           <li @click="changeTab('全部分类')">全部分类</li>
           <li v-for="(menu,i) in menuList" @click="changeTab(menu)" :key="i">{{menu}}</li>
           <li class="add">添加分类</li>
-          <li>添加文章</li>
+          <router-link :to="{path:'/record'}" tag="li">添加文章</router-link>
 				</ul>
 				<div class="close" @click="closeSlide"></div>
 			</div>
@@ -33,6 +36,7 @@
 <script type="text/javascript">
 
 import api from  '../../base/api';
+import Alert from '../../base/mask.js'
 
 export default{
 	name:"Article",
@@ -45,35 +49,43 @@ export default{
 		}
 	},
 	mounted(){
-		this.getData()
+	  if (!this.$store.state.userInfo.userid) {
+      new Alert({
+        content:'快去登录吧'
+      }).create()
+    } else {
+	    this.getData()
+    }
+
 	},
 	methods:{
 		getData(){
-			let self = this;
-			let promise = $.ajax({
-	            url:api.ArticalList(),
-	            type:'post',
-	            dataType:'json',
-	            data: {
-                    page:1,
-                    suid:null
-	            }
-	        });
-	        promise.done(function(res){
-	            self.list = res.data.artList
-	        })
-	        promise.fail(function(res){
-	            
-	        }) 
+		  let data = {
+        suid:this.$store.state.userInfo.userid,
+        token:this.$store.state.userInfo.token
+      }
+			this.$store.dispatch('getMyArt',data)
 		},
 		showSlide(){
-			this.isShowSlide = true;
+      if (!this.$store.state.userInfo.userid) {
+        new Alert({
+          content:'快去登录吧'
+        }).create()
+      } else {
+        this.isShowSlide = true;
+      }
+
 		},
 		closeSlide(){
 			this.isShowSlide = false;
 		},
 		goArticle(aid){
-      this.$router.push({ path: '/articleItem/'+aid})
+      this.$router.push({
+        path: '/articleItem/',
+        query:{
+          aid
+        }
+      })
 		},
     changeTab(title){
 		  this.title = title;
@@ -170,5 +182,11 @@ export default{
 	transform:translate(-286px,0px);
 	-webkit-transition:opacity 0.3s ease-in-out 0.3s,-webkit-transform 0.3s ease-in-out;
 	transition: opacity 0.3s ease-in-out 0.3s,transform 0.3s ease-in-out;
+}
+.empty{
+  height: 100px;
+  line-height: 100px;
+  font-size: 30px;
+  text-align: center;
 }
 </style>
