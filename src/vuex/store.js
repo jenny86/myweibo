@@ -45,9 +45,10 @@ export default new Vuex.Store({
   },
   actions: {
     artList(context, suid) {
-
+      console.log(api.ArticalList())
       let promise = $.ajax({
-        url:api.ArticalList(),
+        // url:'http://local.pengpengla.cn:3000/hotlist',
+        url: api.ArticalList(),
         type:'post',
         dataType:'json',
         data: {

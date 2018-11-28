@@ -1,49 +1,49 @@
 
 
 module.exports = {
-    originMap:'http://www.wangyunchuan.top',
-    
+    // originMap:'http://www.wangyunchuan.top',
+    originMap:'http://local.pengpengla.cn:3000',
     /**
      * 登录
      */
      login: function() {
-        return this.originMap + '/api/login';
+        return this.originMap + '/login';
     },
      /**
      * 注册
      */
      register: function() {
-        return this.originMap + '/api/register';
+        return this.originMap + '/register';
     },
     /**
      * 文章列表
      */
      ArticalList: function() {
-        return this.originMap + '/api/getAllartical';
+        return this.originMap + '/hotlist';
     },
     /**
      * 文章详情
      */
      Articaldetail: function() {
-        return this.originMap + '/api/articaldetail';
+        return this.originMap + '/articaldetail';
     },
     /**
      * 我的文章列表
      */
     MyArtical: function() {
-      return this.originMap + '/api/myArtical';
+      return this.originMap + '/myArtical';
     },
     /**
      * 评论列表
      */
     commentList: function() {
-      return this.originMap + '/api/getReplylist';
+      return this.originMap + '/getReplylist';
     },
     /**
      * 发布文章
      */
     pubArtical: function() {
-      return this.originMap + '/api/pubArtical';
+      return this.originMap + '/pubArtical';
     }
     
 }

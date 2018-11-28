@@ -1,6 +1,5 @@
 <template>
 	<div class="home">
-
     <div class="banner">
       <img src="../../assets/images/logoin-bg.png" />
     </div>
@@ -46,8 +45,8 @@ export default {
 	name:"Home",
 	data(){
 		return {
-
-		}
+      html:'<p>选择你想要挑战的明星</p><img src="https://www.baidu.com/link?url=SI0acEAdVnSUIvbUd8DOU-AF-KPHC120Y6NWMufAf2F4RzmMqtTpHu4PvpjaLTqh2czHBFnfE8RHCZtwPU-_0AVQV4TKBwZJN954dUVJVWRpCSjLjfrwr-YSyzj0lMdZz4_0__prur_cshGqXzVIbTiOeMmzt-fCYTrBJA1WNYbANpdu7Vm5OA6uL-OQ3_omAgGmbnqIbrvzGor4nAsVk-LiXN598p67CskC-8_CefFETwgBtd5oBVZ1QdGHFsAlmJvxF8pfADYxFvAGYZRpEfjSBudhoSY6CORNSR6tp4uNiokLLGZfkqnHKSiTwHntcUZskqkMiAJbI4IZBH7FMEKFJc3088bT3vBzZXBarOUyZmpISxGi2mjvO5nJ9GoN-vvUJ-aEyicXDdU7luiRVq_AXVK4LyzZIunlFXeS_Lz_nDQ-YDQSQOjznyHauNttRUa9C4vW5BSNJZWdZzGQtnaDnscw_tTByaRytzrdjnsCFYYSWfrFoqfredmHDnnZPf3jtgp5FHrxEdU8qPzHCqenvjPM4Q7BuXpNr-OtKbPDpM9Ep26PwOZ1OY2CY6zddi9gye96J5ZfBttGN5j0n8APLeF28YvT3fuoYr7QCczWdXwlmgsWmaFlJ1eOHNt3-OXbMSXSHUFIANV63_g6CRhfYyUgUe0ouy8z_S8snCId2kg55nldT1VKNfyv4Z8vOGNhrvzaz3oiqDOwHhTaw_&timg=&click_t=1541746959974&s_info=1367_767&wd=&eqid=f04f62db0008219a000000035be5310d" />',
+    }
 	},
 	mounted:function(){
     this.$store.dispatch('artList',this.$store.state.userInfo.userid);
@@ -69,6 +68,7 @@ export default {
 </script>
 <style lang="less">
 @import "../../less/global.less";
+
 .user{
   flex-direction:column;
   & img{

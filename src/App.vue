@@ -8,11 +8,11 @@
 
 export default { 
 　　name: 'App', 
-　　data () { 
-　　　　return { 
-　　　　　　transitionName:'slide-left' 
-　　　　} 
-　　},
+  　data () {
+      return {
+        transitionName:'slide-left'
+      }
+    },
     created(){
       this.$store.dispatch('getUserInfo');
     },

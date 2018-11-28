@@ -67,9 +67,13 @@ export default{
 	            url:api.register(),
 	            type:'post',
 	            dataType:'json',
-	            data:param,
-	            processData: false,  // 告诉jQuery不要去处理发送的数据
-             	contentType: false,
+              data:{
+                username,
+                password
+              }
+	            // data:param,
+	            // processData: false,  // 告诉jQuery不要去处理发送的数据
+             	// contentType: false,
 	        });
 	        promise.done(function(res){
             self.$router.push({ path: '/login' })

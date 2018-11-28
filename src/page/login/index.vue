@@ -50,7 +50,7 @@ export default{
 	           		self.$router.push({ path: '/home' })
 	            } else {
                 new Alert({
-                  content:res.msg
+                  content:res.message
                 }).create()
 	            };
 	        })

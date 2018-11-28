@@ -49,19 +49,20 @@ export default{
 		}
 	},
 	mounted(){
-	  if (!this.$store.state.userInfo.userid) {
-      new Alert({
-        content:'快去登录吧'
-      }).create()
-    } else {
-	    this.getData()
-    }
+    this.getData()
+	  // if (!this.$store.state.userInfo.userid) {
+    //   new Alert({
+    //     content:'快去登录吧'
+    //   }).create()
+    // } else {
+	  //   this.getData()
+    // }
 
 	},
 	methods:{
 		getData(){
 		  let data = {
-        suid:this.$store.state.userInfo.userid,
+        suid:this.$store.state.userInfo.suid,
         token:this.$store.state.userInfo.token
       }
 			this.$store.dispatch('getMyArt',data)
