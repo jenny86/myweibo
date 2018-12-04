@@ -1,5 +1,5 @@
 <template>
-<div>test jenkins</div>
+<div>test jenkins autobuild</div>
 </template>
 
 <script>
