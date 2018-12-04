@@ -12,3 +12,6 @@
 		}
 	}
 </script>
+<style lang="less">
+  @import "../../less/global.less";
+</style>

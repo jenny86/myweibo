@@ -3,10 +3,10 @@
 		<h1></h1>
 		<div class="progress"></div>
 		<div class="form" name="form" id="form">
-			<p class="avater">
-				<img :src="avatar" />
-				<input class="upload" @change='add_img'  type="file" />
-			</p>
+			<!--<p class="avater">-->
+				<!--<img :src="avatar" />-->
+				<!--<input class="upload" @change='add_img'  type="file" />-->
+			<!--</p>-->
 			<p class="account"><input type="text" ref="account" placeholder="请输入账号"></p>
 			<p class="password"><input type="password" ref="password" placeholder="请输入密码"></p>
 			<p class="password"><input type="password" ref="confirm" placeholder="请确认密码"></p>
@@ -109,4 +109,6 @@ export default{
 }
 
 </script>
-
+<style lang="less">
+  @import "../../less/global.less";
+</style>

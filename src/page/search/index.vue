@@ -1,11 +1,9 @@
 <template>
   <div>
-    <divc class="search-wrap">
+    <div class="search-wrap">
       <input property="输入关键字搜索" type="text"/>
       <button>搜索</button>
-    </divc>
-
-
+    </div>
   </div>
 
 </template>
@@ -15,7 +13,16 @@
   import api from  '../../base/api';
   import Alert from '../../base/mask.js'
     export default {
-        name: "search"
+        name: "search",
+        data(){
+          return{}
+        },
+        mounted:function () {
+          
+        },
+        methods:{
+
+        }
     }
 </script>
 

@@ -18,7 +18,8 @@ import '../../less/reset.css';
 import '../../less/login.css';
 import api from  '../../base/api';
 import cache from '../../base/cache';
-import Alert from '../../base/mask.js'
+import Alert from '../../base/mask.js';
+import Promise from '../../base/promise'
 
 
 export default{
@@ -33,33 +34,17 @@ export default{
 			let self = this;
 			let account = $(this.$refs.account).val();
 			let password = $(this.$refs.password).val();
-			let promise = $.ajax({
-	            url:api.login(),
-	            type:'post',
-	            dataType:'json',
-	            data: {
-	                username:account,
-                    password
-	            }
-	        });
-	        promise.done(function(res){
-	            if (res.code == '000') {
-
-                cache.setCache('MY_WEIBO',res.data)
-                self.$store.dispatch('login',res.data)
-	           		self.$router.push({ path: '/home' })
-	            } else {
-                new Alert({
-                  content:res.message
-                }).create()
-	            };
-	        })
-	        promise.fail(function(res){
-            new Alert({
-              content:'你家没网了'
-            }).create()
-
-	        })
+      Promise({
+        url:api.login(),
+        data: {
+          username:account,
+          password
+        },
+        succeed:(data)=>{
+          self.data = data;
+          self.getComment()
+        }
+      })
 		}
 	}
 }

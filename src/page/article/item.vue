@@ -10,17 +10,17 @@
 		<h1 class='title'>{{data.title}}</h1>
 		<div class="content">{{data.content}}</div>
 		<div class="buttons" v-if="!isSelf">
-			<button class="like">点赞 {{data.prate}}</button>
-			<button class="store">收藏 {{data.store}}</button>
+			<button class="like">点赞 {{data.like_num}}</button>
+			<button class="store">收藏 {{data.collect_num}}</button>
 		</div>
 		<div class="commentList">
-			<h1>{{data.comments}}条评论</h1>
+			<h1>{{data.comment_num}}条评论</h1>
 			<ul>
 				<li v-for="(list,i) in commentList" :key="i">
           <div class="userinfo">
-            <img :src="list.avatar"/>
+            <img :src="list.logo"/>
             <p>{{list.username}}</p>
-            <span> · {{list.time}}</span>
+            <span> · {{list.publish_time}}</span>
           </div>
           <div class="content">
             <p>{{list.content}}</p>
@@ -60,6 +60,7 @@
 import Router from 'vue-router';
 import api from  '../../base/api';
 import Alert from '../../base/mask.js'
+import Promise from '../../base/promise'
 
 export default{
 	name:"ArticleItem",
@@ -79,30 +80,18 @@ export default{
 	methods:{
 		getData(){
 			let self = this;
-			let promise = $.ajax({
-	            url:api.Articaldetail(),
-	            type:'post',
-	            dataType:'json',
-	            data: {
-                    page:1,
-                    aid:this.$route.query.aid
-	            }
-	        });
-	        promise.done(function(res){
-	        	if (res.code == '000') {
-	        		self.data = res.data;
-	        		self.getComment()
-	        	}else{
-	        	  new Alert({
-                content:res.msg
-              })
-            }
-	        })
-	        promise.fail(function(res){
-            new Alert({
-              content:"你家没网"
-            })
-	        }) 
+      Promise({
+        url: api.Articaldetail(),
+        data: {
+          page:1,
+          did:this.$route.query.did,
+          project_id:this.$route.query.project_id
+        },
+        succeed:(data)=>{
+          self.data = data;
+          self.getComment()
+        }
+      })
 		},
     getComment:function(){
       let self = this;

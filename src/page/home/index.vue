@@ -5,28 +5,28 @@
     </div>
 		<div class="hot">
 			<h1>热门推荐</h1>
-			<div v-for="item in this.$store.state.artList" class="content" @click="goArticle(item.aid,item.uid)">
+			<div v-for="item in this.$store.state.artList" class="content" @click="goArticle(item.id,item.uid)">
 				<div class="text">
 					<dl>
 						<dd>
 							<h1>{{item.title}}</h1>
 							<p>{{item.content}}</p>
 						</dd>
-						<dt><img :src="item.avatar"></dt>
+						<dt><img :src="item.img"></dt>
 					</dl>
 				</div>
 				<div class="button">
 					<p @click="goLike()">
             <img v-if="Number(item.prate) == 1" src="../../assets/images/praise_fill.png"/>
             <img v-else src="../../assets/images/praise.png"/>
-            *{{item.prate}}.点赞
+            *{{item.comment_num}}
           </p>
 					<p>
             <img v-if="Number(item.store) == 1" src="../../assets/images/collection_fill.png"/>
             <img v-else src="../../assets/images/collection.png"/>
-            *{{item.store}}.阅读量
+            *{{item.read_num}}
           </p>
-					<h1>{{item.username}}.{{item.time}}</h1>
+					<h1>{{item.username}}.{{item.publish_time}}</h1>
 				</div>
 			</div>
 		</div>	
@@ -52,12 +52,12 @@ export default {
     this.$store.dispatch('artList',this.$store.state.userInfo.userid);
 	},
 	methods:{
-		goArticle(aid,uid){
+		goArticle(did,project_id){
 			this.$router.push({
         path: '/articleItem/',
         query:{
-          aid,
-          uid
+          did,
+          project_id
         }
 			})
 		}

@@ -1,10 +1,12 @@
 
 
-import Vue  from 'vue';
-import Vuex from 'vuex';
-import api from  '../base/api';
-import cache from '../base/cache';
+import Vue  from 'vue'
+import Vuex from 'vuex'
+import api from  '../base/api'
+import cache from '../base/cache'
 import Alert from '../base/mask'
+import Promise from '../base/promise'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -45,33 +47,17 @@ export default new Vuex.Store({
   },
   actions: {
     artList(context, suid) {
-      console.log(api.ArticalList())
-      let promise = $.ajax({
-        // url:'http://local.pengpengla.cn:3000/hotlist',
+
+      Promise({
         url: api.ArticalList(),
-        type:'post',
-        dataType:'json',
         data: {
-          page:1,
-          suid
+              page:1,
+              suid
+            },
+        succeed:(data)=>{
+          context.commit('GET_ArticalList',data);
         }
-      });
-      promise.done(function(res){
-        if (res.code == '000') {
-          context.commit('GET_ArticalList',res.data.artList);
-        }else{
-          let alert = new Alert({
-            content:res.msg
-          }).create()
-        };
-
       })
-      promise.fail(function(res){
-        let alert = new Alert({
-          content:'你家没网了'
-        }).create()
-      })
-
     },
     login({commit},userInfo){
       commit('LOGIN',userInfo)
@@ -83,33 +69,16 @@ export default new Vuex.Store({
       commit('QUIT_LOGIN')
     },
     getMyArt({commit},data){
-      let promise = $.ajax({
-        url:api.MyArtical(),
-        type:'post',
-        dataType:'json',
-        headers: {
-          Accept: "application/json; charset=utf-8",
-          Authentication:data.token
-        },
+      Promise({
+        url: api.ArticalList(),
         data: {
           page:1,
           suid:data.suid
-        }
-      });
-      promise.done(function(res){
-        if (res.code == '000') {
+        },
+        succeed:(data)=>{
           commit('GET_myArt',res.data.artList);
-        }else{
-          let alert = new Alert({
-            content:res.msg
-          }).create()
-        }
 
-      })
-      promise.fail(function(res){
-        let alert = new Alert({
-          content:'你家没网了'
-        }).create()
+        }
       })
     }
   },

@@ -7,7 +7,7 @@ module.exports = {
      * 登录
      */
      login: function() {
-        return this.originMap + 'api/login';
+        return this.originMap + '/m/login/User_Register';
     },
      /**
      * 注册
@@ -25,7 +25,7 @@ module.exports = {
      * 文章详情
      */
      Articaldetail: function() {
-        return this.originMap + '/articaldetail';
+        return this.originMap + '/m/ArticleInfo/article_Details/';
     },
     /**
      * 我的文章列表
