@@ -1,7 +1,10 @@
 <template>
   <div>
-    <input property="输入关键字搜索" type="text"/>
-    <button>搜索</button>
+    <divc class="search-wrap">
+      <input property="输入关键字搜索" type="text"/>
+      <button>搜索</button>
+    </divc>
+
 
   </div>
 
@@ -16,13 +19,28 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
   @import "../../less/global.less";
+  .search-wrap{
+    padding: 50px 20px;
+    display: flex;
+  }
   input{
-    height:92px;
+    display: block;
+    height:50px;
+    box-sizing: border-box;
     padding: 20px 32px;
     font-size: 36px;
     line-height: 92px;
     border-radius: 12px;
+  }
+  button{
+    width:100px;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 20px;
+    background:@color-green-bg;
+    color: #ffffff;
   }
 </style>

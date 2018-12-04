@@ -1,13 +1,13 @@
 
 
 module.exports = {
-    // originMap:'http://www.wangyunchuan.top',
-    originMap:'http://local.pengpengla.cn:3000',
+    originMap:'http://api.wangyunchuan.top',
+    // originMap:'http://local.pengpengla.cn:3000',
     /**
      * 登录
      */
      login: function() {
-        return this.originMap + '/login';
+        return this.originMap + 'api/login';
     },
      /**
      * 注册
@@ -19,7 +19,7 @@ module.exports = {
      * 文章列表
      */
      ArticalList: function() {
-        return this.originMap + '/hotlist';
+        return this.originMap + '/m/ArticleInfo/article_List';
     },
     /**
      * 文章详情

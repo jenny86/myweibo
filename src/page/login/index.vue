@@ -65,6 +65,9 @@ export default{
 }
 
 </script>
-<style>
-	
+<style lang="less">
+  @import "../../less/global.less";
+  .login-wrap .form p input{
+    background: none;
+  }
 </style>
