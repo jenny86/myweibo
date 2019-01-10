@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
-    "push":"git push origin master && git push origintest master"
+    "push": "git push origin master && git push origintest master"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -17,8 +17,10 @@
     "lib-flexible": "^0.3.2",
     "px2rem-loader": "^0.1.9",
     "vue": "^2.5.2",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
+    "wangeditor": "^3.1.1",
     "zepto": "^1.2.0"
   },
   "devDependencies": {

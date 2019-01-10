@@ -1,14 +1,15 @@
 <template>
-	<div class="articleItem">
+  <div class="articleItem">
+	  <div v-for="(data,i) in dataList">
 		<dl class="authorInfo">
-			<dt><img :src="data.avatar"></dt>
+			<dt><img :src="data.img"></dt>
 			<dd>
 				<h1><span>{{data.username}}</span> 发布于 {{data.time}}</h1>
-				<p>*收藏{{data.store}}</p>
+				<p>*点赞{{data.like_num}}</p>
 			</dd>
 		</dl>
 		<h1 class='title'>{{data.title}}</h1>
-		<div class="content">{{data.content}}</div>
+		<div class="content">{{data.w_content}}</div>
 		<div class="buttons" v-if="!isSelf">
 			<button class="like">点赞 {{data.like_num}}</button>
 			<button class="store">收藏 {{data.collect_num}}</button>
@@ -53,7 +54,8 @@
 			</div>
 		</div>
 
-	</div>
+	</div >
+  </div>
 </template>
 
 <script type="text/javascript">
@@ -66,7 +68,7 @@ export default{
 	name:"ArticleItem",
 	data(){
 		return {
-			data:{},
+			dataList:{},
       commentList:[],
       isSelf:false
 		}
@@ -83,13 +85,12 @@ export default{
       Promise({
         url: api.Articaldetail(),
         data: {
-          page:1,
-          did:this.$route.query.did,
-          project_id:this.$route.query.project_id
+          did:this.$route.query.did
+          // project_id:this.$route.query.project_id
         },
         succeed:(data)=>{
-          self.data = data;
-          self.getComment()
+          self.dataList = data;
+          // self.getComment()
         }
       })
 		},

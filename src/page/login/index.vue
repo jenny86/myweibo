@@ -42,7 +42,8 @@ export default{
         },
         succeed:(data)=>{
           self.data = data;
-          self.getComment()
+          self.$store.dispatch('login',data);
+          self.$router.push({ path: '/' })
         }
       })
 		}
@@ -52,7 +53,4 @@ export default{
 </script>
 <style lang="less">
   @import "../../less/global.less";
-  .login-wrap .form p input{
-    background: none;
-  }
 </style>

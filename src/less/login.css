@@ -40,6 +40,22 @@ html,body{
 	background: url(../assets/images/password-icon.png) no-repeat left center;
 	background-size: 24px 30px;
 }
+.login-wrap .form p.valicode{
+  display: flex;
+  justify-content: space-between;
+  border: none;
+}
+.login-wrap .form p.valicode input{
+  display: block;
+  width: 40%;
+  border: 1px solid #b7b7b9;
+}
+.login-wrap .form p.valicode img{
+  display: block;
+  width:132px;
+  height:46px;
+
+}
 .login-wrap .form button{
 	display: block;
 	width: 100%;
@@ -74,9 +90,9 @@ html,body{
 .register-wrap .buttons span{
 	color: #22cb9a;
 }
-.register-wrap .progress{
-	width: 100%;
-	height:110px;
-	background:url(../assets/images/decorate.png) no-repeat center 26px;
-	background-size:600px 44px;
-}
+/*.register-wrap .progress{*/
+	/*width: 100%;*/
+	/*height:110px;*/
+	/*!*background:url(../assets/images/decorate.png) no-repeat center 26px;*!*/
+	/*background-size:600px 44px;*/
+/*}*/

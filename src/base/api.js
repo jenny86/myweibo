@@ -7,13 +7,13 @@ module.exports = {
      * 登录
      */
      login: function() {
-        return this.originMap + '/m/login/User_Register';
+        return this.originMap + '/m/user_action/login';
     },
      /**
      * 注册
      */
      register: function() {
-        return this.originMap + '/register';
+        return this.originMap + '/m/user_action/register';
     },
     /**
      * 文章列表
@@ -25,7 +25,7 @@ module.exports = {
      * 文章详情
      */
      Articaldetail: function() {
-        return this.originMap + '/m/ArticleInfo/article_Details/';
+        return this.originMap + '/m/ArticleInfo/article_Details';
     },
     /**
      * 我的文章列表

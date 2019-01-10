@@ -15,11 +15,17 @@ export default
   axios({
     method,
     url,
-    data
+    data,
+    transformRequest: [function (data) {
+      let ret = ''
+      for (let it in data) {
+        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+      }
+      return ret
+    }]
   })
     .then((res)=>{
-
-      if (res.data.respcode == '000'){
+      if (res.data.code == '000'){
         succeed(res.data.data)
       } else{
         let alert = new Alert({

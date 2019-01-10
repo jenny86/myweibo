@@ -2,7 +2,7 @@
     <div class="wrap">
         <div class="login">
             <router-link class="search" :to="{path:'/search'}" tag="p"></router-link>
-            <router-link v-if="!this.$store.state.userInfo.userid" :to="{path:'/login'}" class="loginIcon" tag="p"></router-link>
+            <router-link v-if="!this.$store.state.userInfo.uid" :to="{path:'/login'}" class="loginIcon" tag="p"></router-link>
             <p v-else @click="quit">退出</p>
         </div>
         <transition :name="transitionName" mode="out-in"> 

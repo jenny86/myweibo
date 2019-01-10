@@ -68,7 +68,7 @@ export default{
 			this.$store.dispatch('getMyArt',data)
 		},
 		showSlide(){
-      if (!this.$store.state.userInfo.userid) {
+      if (!this.$store.state.userInfo.uid) {
         new Alert({
           content:'快去登录吧'
         }).create()

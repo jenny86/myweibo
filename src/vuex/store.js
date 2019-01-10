@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     artList:[],
     userInfo:{
-      userid:null
+      uid:null
     }
   },
   mutations: {
@@ -27,12 +27,13 @@ export default new Vuex.Store({
         state.userInfo = cacheData;
       } else {
         state.userInfo = {
-          userid:null
+          uid:null
         }
       }
       // state.userInfo = userInfo;
     },
     LOGIN(state,userInfo){
+      cache.setCache('MY_WEIBO',userInfo)
       state.userInfo = userInfo;
     },
     QUIT_LOGIN(state){
@@ -46,13 +47,12 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    artList(context, suid) {
+    artList(context) {
 
       Promise({
         url: api.ArticalList(),
         data: {
-              page:1,
-              suid
+              page:1
             },
         succeed:(data)=>{
           context.commit('GET_ArticalList',data);
